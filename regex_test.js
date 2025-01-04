@@ -2,8 +2,8 @@ import { assert, assertFalse, assertEquals } from "jsr:@std/assert";
 import {
   emailValidate,
   usPhoneValidate,
-  allNumbers,
   startEnd,
+  allNumbers,
   duplicates,
 } from "./regex.js";
 
@@ -57,4 +57,18 @@ Deno.test("Extract numbers from strings with no numbers", () => {
   assertEquals("abc ".match(allNumbers), null);
   assertEquals(" abc".match(allNumbers), null);
   assertEquals(" abc ".match(allNumbers), null);
+});
+
+Deno.test("extract duplicates from strings with duplicates", () => {
+  assertEquals("This is is a test test.".match(duplicates), [
+    "is is",
+    "test test",
+  ]);
+  assertEquals("101 101 is done.".match(duplicates), ["101 101"]);
+});
+
+Deno.test("extract duplicates from strings with no duplicates", () => {
+  assertEquals("This test is a test string.".match(duplicates), null);
+  assertEquals("This isis a test string.".match(duplicates), null);
+  assertEquals("This isa is a test string.".match(duplicates), null);
 });

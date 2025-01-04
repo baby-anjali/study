@@ -13,4 +13,4 @@ export const startEnd = /^Hello.*World!$/;
 
 // 5. Write a regex to find duplicate words in the string:
 // `"This is is a test test string."`.
-export const duplicates = /\b(\w+)\b.*\b\1\b/;
+export const duplicates = /\b(\w+)\s+\1\b/g;
