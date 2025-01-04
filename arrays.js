@@ -30,3 +30,7 @@ const filterPrimes = (array) => array.filter((element) => isPrime(element));
 // 9. Sort an array of strings by their length.
 
 const sortByLength = (array) => array.sort((a, b) => a.length - b.length);
+
+// 10. Use `map` to create an array of the square roots of `[1, 4, 9, 16, 25]`.
+
+const squareRoots = (array) => array.map((number) => Math.sqrt(number));
