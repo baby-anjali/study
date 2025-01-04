@@ -30,3 +30,32 @@ Deno.test("Product of elements where there is zero", () => {
   assertEquals(product([0, -7, -8]), 0);
   assertEquals(product([0]), 0);
 });
+
+Deno.test("Filter truthy for array with all truthy values", () => {
+  assertEquals(filterTruthy([1]), [1]);
+  assertEquals(filterTruthy(["a"]), ["a"]);
+  assertEquals(filterTruthy([1, 2]), [1, 2]);
+  assertEquals(filterTruthy([1, "a"]), [1, "a"]);
+  assertEquals(filterTruthy([1, 2, 3]), [1, 2, 3]);
+  assertEquals(filterTruthy(["a", "b", "c"]), ["a", "b", "c"]),
+    assertEquals(filterTruthy(["a", true, "c"]), ["a", true, "c"]);
+});
+
+Deno.test("Filter truthy for array with some truthy values", () => {
+  assertEquals(filterTruthy([1, 0]), [1]);
+  assertEquals(filterTruthy(["a", ""]), ["a"]);
+  assertEquals(filterTruthy([1, 2, null]), [1, 2]);
+  assertEquals(filterTruthy([1, "a", false]), [1, "a"]);
+  assertEquals(filterTruthy([1, NaN, 2, 3]), [1, 2, 3]);
+  assertEquals(filterTruthy(["a", "b", "c", undefined]), ["a", "b", "c"]);
+});
+
+Deno.test("Filter truthy for array with no truthy values", () => {
+  assertEquals(filterTruthy([""]), []);
+  assertEquals(filterTruthy([0]), []);
+  assertEquals(filterTruthy([false]), []);
+  assertEquals(filterTruthy([null]), []);
+  assertEquals(filterTruthy([undefined]), []);
+  assertEquals(filterTruthy([NaN]), []),
+    assertEquals(filterTruthy([0, null, undefined, false, 0, "", NaN]), []);
+});
