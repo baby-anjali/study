@@ -1,5 +1,5 @@
 // 1. Write a regular expression to validate an email address.
-export const emailValidate = /\w+@g?mail.com/;
+export const emailValidate = /\S+@g?mail.com/;
 
 // 2. Create a regex pattern to match a U.S. phone number format:
 // `(123) 456-7890`.
