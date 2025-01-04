@@ -26,3 +26,7 @@ const isPrime = function (number) {
 };
 
 const filterPrimes = (array) => array.filter((element) => isPrime(element));
+
+// 9. Sort an array of strings by their length.
+
+const sortByLength = (array) => array.sort((a, b) => a.length - b.length);
