@@ -42,3 +42,19 @@ Deno.test("Strings start with Hello and end with World!: incorrect", () => {
   assertFalse(startEnd.test("helloWorld!"));
   assertFalse(startEnd.test("Helo  World!"));
 });
+
+Deno.test("Extract numbers from strings with numbers", () => {
+  assertEquals("0".match(allNumbers), ["0"]);
+  assertEquals("abc22 0".match(allNumbers), ["22", "0"]);
+  assertEquals("22df35 gh0".match(allNumbers), ["22", "35", "0"]);
+  assertEquals("abc22df35 56 gh0".match(allNumbers), ["22", "35", "56", "0"]);
+});
+
+Deno.test("Extract numbers from strings with no numbers", () => {
+  assertEquals("abc".match(allNumbers), null);
+  assertEquals("a bc".match(allNumbers), null);
+  assertEquals("ab c".match(allNumbers), null);
+  assertEquals("abc ".match(allNumbers), null);
+  assertEquals(" abc".match(allNumbers), null);
+  assertEquals(" abc ".match(allNumbers), null);
+});
