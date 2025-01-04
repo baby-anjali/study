@@ -10,3 +10,19 @@ const filterTruthy = (array) => array.filter((element) => element);
 
 // 8. Use `filter` to extract all prime numbers from
 // `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`.
+
+const isPrime = function (number) {
+  if (number <= 3) {
+    return number > 1;
+  }
+
+  for (let factor = 2; factor <= Math.sqrt(number); factor++) {
+    if (number % factor === 0) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
+const filterPrimes = (array) => array.filter((element) => isPrime(element));
